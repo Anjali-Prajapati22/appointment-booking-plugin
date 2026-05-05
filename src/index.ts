@@ -1,0 +1,1 @@
+export { default as AppointmentBooking } from "./components/AppointmentBooking";
