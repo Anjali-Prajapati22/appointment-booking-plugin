@@ -1,1 +1,4 @@
-export { default as AppointmentBooking } from "./components/AppointmentBooking";
+import AppointmentBooking from "./components/AppointmentBooking";
+
+export default AppointmentBooking;
+export { AppointmentBooking };
