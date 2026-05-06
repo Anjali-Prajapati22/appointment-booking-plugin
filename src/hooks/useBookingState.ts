@@ -16,8 +16,10 @@ export const useBookingState = () => {
     },
   });
 
-  const nextStep = () => setStep((prev) => prev + 1);
-  const prevStep = () => setStep((prev) => prev - 1);
+  const nextStep = () => {
+    setStep((prev: number) => prev + 1);
+  };
+  const prevStep = () => setStep((prev: number) => prev - 1);
 
   const resetBooking = () => {
     setStep(1);

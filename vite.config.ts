@@ -8,24 +8,33 @@ export default defineConfig({
     react(),
     dts({
       insertTypesEntry: true,
-      entryRoot: "src",
-      tsconfigPath: "./tsconfig.app.json",
-    }),
+      entryRoot: "src"
+    })
   ],
+
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
       name: "AppointmentBookingPlugin",
-      fileName: "appointment-booking-plugin",
+      formats: ["es", "cjs", "umd"],
+      fileName: (format) => {
+        if (format === "es") return "index.mjs";
+        if (format === "cjs") return "index.cjs";
+        return "index.umd.js";
+      }
     },
+
     rollupOptions: {
       external: ["react", "react-dom", "bootstrap"],
       output: {
         globals: {
           react: "React",
-          "react-dom": "ReactDOM",
-        },
-      },
+          "react-dom": "ReactDOM"
+        }
+      }
     },
-  },
+
+    sourcemap: true,
+    minify: "esbuild"
+  }
 });
